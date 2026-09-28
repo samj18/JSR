@@ -1,0 +1,235 @@
+/* Base: navy #061228 / accent #5b3df5 / inputs: light navy */
+.root {
+    -fx-font-family: "Segoe UI", "SF Pro Text", "Helvetica Neue", "Arial", sans-serif;
+    -fx-background-color: #f2f4f9;
+
+    -fb-navy:            #061228;
+    -fb-navy-light:      #dde4f2;
+    -fb-navy-lighter:    #eef1f8;
+    -fb-navy-border:     #b7c2d9;
+    -fb-accent:          #5b3df5;
+    -fb-accent-hover:    #4a2fd8;
+    -fb-danger:          #dc2626;
+    -fb-danger-hover:    #b91c1c;
+
+    -fb-bg:            #f2f4f9;
+    -fb-bg-alt:        #ffffff;
+    -fb-text:          -fb-navy;
+    -fb-text-muted:    #4a5878;
+    -fb-text-on-dark:  #d6e0f5;
+    -fb-border:        -fb-navy-border;
+    -fb-status-bg:     -fb-navy-lighter;
+    -fb-header-from:   -fb-navy;
+    -fb-header-to:     #0b1e42;
+    -fb-input-bg:      -fb-navy-light;
+    -fb-pin:           #ffe08a;
+}
+
+.root.dark {
+    -fx-background-color: -fb-navy;
+    -fb-bg:            -fb-navy;
+    -fb-bg-alt:        #0d1c3a;
+    -fb-text:          #e6ebf5;
+    -fb-text-muted:    #8a97b3;
+    -fb-text-on-dark:  #d6e0f5;
+    -fb-border:        #1c2b4d;
+    -fb-status-bg:     #091733;
+    -fb-header-from:   #030a18;
+    -fb-header-to:     -fb-navy;
+    -fb-input-bg:      #0f2148;
+    -fb-pin:           #ffd96b;
+}
+
+.header {
+    -fx-background-color: linear-gradient(to right, -fb-header-from, -fb-header-to);
+}
+
+/* All labels inside the header are white by default (overrides the generic .label rule below) */
+.header .label {
+    -fx-text-fill: white;
+}
+
+.app-title {
+    -fx-text-fill: white;
+}
+
+.field-label {
+    -fx-text-fill: -fb-text-on-dark;
+    -fx-font-size: 11;
+    -fx-font-weight: bold;
+}
+
+.port-value {
+    -fx-text-fill: white;
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+    -fx-font-family: "Consolas", "Menlo", monospace;
+    -fx-background-color: rgba(255,255,255,0.15);
+    -fx-padding: 4 12 4 12;
+    -fx-background-radius: 4;
+}
+
+.pin-value {
+    -fx-text-fill: -fb-pin;
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+    -fx-font-family: "Consolas", "Menlo", monospace;
+}
+
+/* PIN value stays yellow even inside the header */
+.header .pin-value {
+    -fx-text-fill: -fb-pin;
+}
+
+.section-title {
+    -fx-text-fill: -fb-text-muted;
+    -fx-font-size: 11;
+    -fx-font-weight: bold;
+}
+
+.hint {
+    -fx-text-fill: -fb-text-muted;
+    -fx-font-size: 11;
+    -fx-font-style: italic;
+}
+
+.primary-btn {
+    -fx-background-color: -fb-accent;
+    -fx-text-fill: white;
+    -fx-background-radius: 4;
+    -fx-padding: 6 14 6 14;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+.primary-btn:hover    { -fx-background-color: -fb-accent-hover; }
+.primary-btn:disabled { -fx-opacity: 0.5; }
+
+.danger-btn {
+    -fx-background-color: -fb-danger;
+    -fx-text-fill: white;
+    -fx-background-radius: 4;
+    -fx-padding: 6 14 6 14;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+.danger-btn:hover    { -fx-background-color: -fb-danger-hover; }
+.danger-btn:disabled { -fx-opacity: 0.5; }
+
+.ghost-btn {
+    -fx-background-color: rgba(255,255,255,0.15);
+    -fx-text-fill: white;
+    -fx-background-radius: 4;
+    -fx-padding: 4 10 4 10;
+    -fx-cursor: hand;
+}
+.ghost-btn:hover { -fx-background-color: rgba(255,255,255,0.30); }
+
+.button {
+    -fx-background-color: -fb-bg-alt;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+    -fx-text-fill: -fb-text;
+    -fx-border-color: -fb-border;
+    -fx-border-radius: 4;
+}
+.button:hover {
+    -fx-background-color: -fb-accent;
+    -fx-text-fill: white;
+    -fx-border-color: -fb-accent;
+}
+.button:pressed,
+.button:armed,
+.button:focused {
+    -fx-background-color: -fb-accent;
+    -fx-text-fill: white;
+    -fx-border-color: -fb-accent;
+}
+.button:disabled { -fx-opacity: 0.5; }
+
+/* Primary buttons: keep purple base, darker purple on pressed/hover */
+.primary-btn:pressed,
+.primary-btn:armed {
+    -fx-background-color: -fb-accent-hover;
+}
+
+/* Danger buttons: keep red look — don't turn purple */
+.danger-btn:hover,
+.danger-btn:pressed,
+.danger-btn:armed {
+    -fx-background-color: -fb-danger-hover;
+    -fx-text-fill: white;
+}
+
+/* Ghost buttons in the header: brighten on hover/press, keep white text */
+.ghost-btn:hover,
+.ghost-btn:pressed,
+.ghost-btn:armed {
+    -fx-background-color: -fb-accent;
+    -fx-text-fill: white;
+}
+
+.path-label {
+    -fx-text-fill: -fb-accent;
+    -fx-font-family: "Consolas", "Menlo", monospace;
+}
+
+.status-bar {
+    -fx-background-color: -fb-status-bg;
+    -fx-border-color: -fb-border;
+    -fx-border-width: 1 0 0 0;
+}
+.status-bar > .label { -fx-text-fill: -fb-text; }
+
+.list-view, .table-view {
+    -fx-background-color: -fb-bg-alt;
+    -fx-border-color: -fb-border;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-text-fill: -fb-text;
+}
+
+.list-view .list-cell,
+.table-view .table-row-cell {
+    -fx-background-color: -fb-bg-alt;
+    -fx-text-fill: -fb-text;
+}
+
+.list-view .list-cell:filled:selected,
+.table-view .table-row-cell:filled:selected {
+    -fx-background-color: -fb-accent;
+    -fx-text-fill: white;
+}
+
+.text-field, .password-field, .combo-box {
+    -fx-background-color: -fb-input-bg;
+    -fx-text-fill: -fb-text;
+    -fx-prompt-text-fill: -fb-text-muted;
+    -fx-border-color: -fb-navy-border;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-padding: 4 8 4 8;
+}
+.text-field:focused, .password-field:focused, .combo-box:focused {
+    -fx-border-color: -fb-accent;
+}
+.combo-box .list-cell { -fx-text-fill: -fb-text; -fx-background-color: -fb-input-bg; }
+.combo-box-popup .list-view { -fx-background-color: -fb-bg-alt; -fx-border-color: -fb-border; }
+
+.split-pane { -fx-background-color: -fb-bg; }
+.split-pane > .split-pane-divider { -fx-background-color: -fb-border; -fx-padding: 0 1 0 1; }
+
+.scroll-bar { -fx-background-color: -fb-bg; }
+.scroll-bar .thumb { -fx-background-color: -fb-border; }
+
+.label { -fx-text-fill: -fb-text; }
+
+.table-view .column-header,
+.table-view .filler { -fx-background-color: -fb-status-bg; }
+.table-view .column-header .label { -fx-text-fill: -fb-text; -fx-font-weight: bold; }
+
+.check-box .text { -fx-fill: -fb-text; }
+
+.dialog-pane { -fx-background-color: -fb-bg-alt; }
+.dialog-pane .label { -fx-text-fill: -fb-text; }
+.dialog-pane .header-panel { -fx-background-color: -fb-navy-lighter; }
+.dialog-pane .header-panel .label { -fx-text-fill: -fb-text; -fx-font-weight: bold; }

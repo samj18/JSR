@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.filebridge.client.controller.MainController"
+            fx:id="root"
+            prefWidth="1100" prefHeight="720">
+
+    <top>
+        <VBox styleClass="header">
+            <HBox spacing="14" alignment="CENTER_LEFT">
+                <padding><Insets top="10" right="20" bottom="6" left="20"/></padding>
+                <Label fx:id="appTitleLabel" text="JSR" styleClass="app-title">
+                    <font><Font name="System Bold" size="20"/></font>
+                </Label>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button fx:id="languageBtn" text="العربية" styleClass="ghost-btn"/>
+                <Button fx:id="themeBtn" text="🌙 Dark" styleClass="ghost-btn"/>
+                <VBox spacing="2">
+                    <Label fx:id="pinTitleLabel" text="Access PIN" styleClass="field-label"/>
+                    <Label fx:id="pinLabel" text="—" styleClass="pin-value"/>
+                </VBox>
+                <Button fx:id="generatePinBtn" text="Generate PIN" styleClass="primary-btn"/>
+            </HBox>
+
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <padding><Insets top="2" right="20" bottom="10" left="20"/></padding>
+                <Label fx:id="myIpLabel" text="My IP:" styleClass="field-label"/>
+                <ComboBox fx:id="ipCombo" prefWidth="320"/>
+                <Label fx:id="portTitleLabel" text="Port:" styleClass="field-label"/>
+                <TextField fx:id="portField" prefWidth="80"/>
+                <Button fx:id="applyPortBtn" text="Apply" styleClass="ghost-btn"/>
+                <Label fx:id="portHintLabel" text="" styleClass="hint-light"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <SplitPane fx:id="splitPane" dividerPositions="0.34">
+
+            <VBox spacing="8">
+                <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+                <Label fx:id="sharesTitleLabel" text="MY SHARED FOLDERS" styleClass="section-title"/>
+                <Label fx:id="sharesLegendLabel" text="🔒 read-only, ✏ writable, ⏱ time left" styleClass="hint"/>
+                <ListView fx:id="sharesList" VBox.vgrow="ALWAYS"/>
+                <HBox spacing="6">
+                    <Button fx:id="addShareBtn" text="+ Add share…" maxWidth="Infinity" HBox.hgrow="ALWAYS" styleClass="primary-btn"/>
+                </HBox>
+                <HBox spacing="6">
+                    <Button fx:id="toggleWritableBtn" text="Toggle 🔒/✏" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                    <Button fx:id="removeShareBtn" text="Remove" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                </HBox>
+                <Separator/>
+                <Label fx:id="sharesTipLabel" text="Tip: share IP, Port, and PIN with the other machine" styleClass="hint"/>
+            </VBox>
+
+            <VBox spacing="8">
+                <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+                <Label fx:id="remoteTitleLabel" text="CONNECT TO A PEER" styleClass="section-title"/>
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <TextField fx:id="remoteHostField" promptText="Host" HBox.hgrow="ALWAYS"/>
+                    <TextField fx:id="remotePortField" promptText="Port" prefWidth="80"/>
+                    <PasswordField fx:id="remotePinField" promptText="PIN" prefWidth="100"/>
+                    <Button fx:id="connectBtn" text="Connect" styleClass="primary-btn"/>
+                </HBox>
+
+                <Separator/>
+
+                <HBox spacing="8" VBox.vgrow="ALWAYS">
+                    <VBox spacing="4" prefWidth="220">
+                        <Label fx:id="remoteSharesTitleLabel" text="Shares" styleClass="section-title"/>
+                        <ListView fx:id="remoteSharesList" VBox.vgrow="ALWAYS"/>
+                    </VBox>
+
+                    <VBox spacing="4" HBox.hgrow="ALWAYS">
+                        <HBox spacing="6" alignment="CENTER_LEFT">
+                            <Button fx:id="upBtn" text="↑ Up"/>
+                            <Label fx:id="remotePathLabel" text="/" styleClass="path-label"/>
+                        </HBox>
+                        <TableView fx:id="remoteEntriesTable" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="nameCol" text="Name" prefWidth="340"/>
+                                <TableColumn fx:id="sizeCol" text="Size" prefWidth="100"/>
+                            </columns>
+                        </TableView>
+                        <HBox spacing="6">
+                            <Button fx:id="downloadBtn" text="⬇ Download" maxWidth="Infinity" HBox.hgrow="ALWAYS" styleClass="primary-btn"/>
+                            <Button fx:id="uploadBtn" text="⬆ Upload" maxWidth="Infinity" HBox.hgrow="ALWAYS" styleClass="primary-btn"/>
+                            <Button fx:id="deleteRemoteBtn" text="🗑 Remove" maxWidth="Infinity" HBox.hgrow="ALWAYS" styleClass="danger-btn"/>
+                        </HBox>
+                    </VBox>
+                </HBox>
+            </VBox>
+        </SplitPane>
+    </center>
+
+    <bottom>
+        <HBox spacing="12" alignment="CENTER_LEFT" styleClass="status-bar">
+            <padding><Insets top="6" right="12" bottom="6" left="12"/></padding>
+            <Label fx:id="statusLabel" text="Ready." HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+            <ProgressBar fx:id="progressBar" prefWidth="240" progress="0"/>
+        </HBox>
+    </bottom>
+</BorderPane>
